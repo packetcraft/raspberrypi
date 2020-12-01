@@ -1,0 +1,20 @@
+---
+version: "2.1"
+# Create Heimdall config directory
+# mkdir -p ~/.config/heimdall/
+
+
+services:
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /.config/heimdall:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
